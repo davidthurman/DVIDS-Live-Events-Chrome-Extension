@@ -1,5 +1,9 @@
 $(document).ready(function() {
-  
+  var video0 = "";
+  var video1 = "";
+  var video2 = "";
+  var video3 = "";
+  var video4 = "";
 });
 function getImageUrl() {
   var searchUrl = 'http://api.dvidshub.net/live/list?max_results=5&api_key=key-57f3a82240293';
@@ -13,6 +17,24 @@ function getImageUrl() {
     $.each(data['results'], function(index, value) {
       console.log(value['thumbnail']['url']);
       console.log(index);
+      var d = new Date(value['begin']);
+      console.log(d);
+
+      if (index == 0) {
+        video0 = value["url"];
+      }
+      else if (index == 1){
+        video1 = value["url"];
+      }
+      else if (index == 2){
+        video2 = value["url"];
+      }
+      else if (index == 3){
+        video3 = value["url"];
+      }
+      else if (index == 4){
+        video4 = value["url"];
+      }
 
       // var urlTest = "https://www.dvidshub.net/webcast/9488";
       // var thumbnailTest = "http://static.dvidshub.net/media/thumbs/webcast/images/dod_default/122x92_q95.jpg";
@@ -35,14 +57,14 @@ function getImageUrl() {
       //   '</a>';
 
       var singleVideo =
-        '<a id="container-link" href="' + value['url'] + '">' +
+        '<a id="' + index + '" href="' + value['url'] + '">' +
           '<div class="single-video-container">' +
             '<div class="container-main-section">' +
               '<div class="thumbnail-wrapper">' +
                 '<img class="thumbnail" src="' + value['thumbnail']['url'] + '"/>' +
               '</div>' +
               '<div class="single-video-title">' + value['title'] + '</div>' +
-              '<div class="single-video-time">' + value['begin'] + '</div>' +
+              '<div class="single-video-time">' + d + '</div>' +
             '</div>' +
             '<div class="single-video-summary">' + value['description'] + '</div>' +
           '</div>' +
@@ -55,8 +77,28 @@ function getImageUrl() {
 
         $( ".content-wrapper" ).prepend(singleVideo); 
     });
-  $("#container-link").click(function() {
+  $(".container-link").click(function() {
       var newURL = "https://reddit.com";
+      chrome.tabs.create({ url: newURL });
+    });
+  $("#0").click(function() {
+      var newURL = video0;
+      chrome.tabs.create({ url: newURL });
+    });
+  $("#1").click(function() {
+      var newURL = video1;
+      chrome.tabs.create({ url: newURL });
+    });
+  $("#2").click(function() {
+      var newURL = video2;
+      chrome.tabs.create({ url: newURL });
+    });
+  $("#3").click(function() {
+      var newURL = video3;
+      chrome.tabs.create({ url: newURL });
+    });
+  $("#4").click(function() {
+      var newURL = video4;
       chrome.tabs.create({ url: newURL });
     });
   });
