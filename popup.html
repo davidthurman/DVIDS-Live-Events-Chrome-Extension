@@ -11,6 +11,7 @@
       body {
         font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
         font-size: 100%;
+        background-color: #404040;
       }
       #status {
         /* avoid an excessively wide status text */
@@ -22,12 +23,12 @@
       .single-video-container{
         color:#ffffff;
         background-color: #404040;
-        width:700px;
-        height:300px;
+        width:100%;
+        height:100%;
       }
       .container-main-section {
         text-align: center;
-        margin: 0px auto;
+        margin: 20px;
         width: 100%;
         display:flex;
         float: left;
@@ -49,8 +50,29 @@
       .single-video-summary {
         position: relative;
         display: inline-block;
+        margin: 10px 30px 10px 30px;
       }
 
+      .single-video-title {
+        margin-top: 40px;
+      }
+
+      .single-video-time {
+        margin-top: 40px;
+      }
+
+      #upcomingTitle {
+        color:#ffffff;
+      }
+
+      hr {
+        
+        border: 0;
+        width: 40%;
+        color: #ffffff;
+        background-color: #ffffff;
+        height: 2px;
+      }
 
       a, u {
           text-decoration: none;
@@ -67,6 +89,7 @@
     <script src="popup.js"></script>
   </head>
   <body>
+    <p id="upcomingTitle">Upcoming Live Videos:</p>
     <div class="content-wrapper">
 
     </div>
