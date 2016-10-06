@@ -1,18 +1,17 @@
 {
   "manifest_version": 2,
 
-  "name": "Getting started example",
+  "name": "DVIDS Live Videos",
   "description": "This extension shows a Google Image search result for the current page",
   "version": "1.0",
 
   "browser_action": {
     "default_icon": "icon.png",
     "default_popup": "popup.html",
-    "default_title": "Click here!"
+    "default_title": "View Upcoming Live Videos"
   },
   "permissions": [
     "activeTab",
-    "tabs",
     "https://ajax.googleapis.com/"
   ]
 }
