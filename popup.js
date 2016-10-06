@@ -2,6 +2,8 @@ function getImageUrl() {
   var searchUrl = 'http://api.dvidshub.net/live/list?max_results=5&thumb_width=200&api_key=key-57f3a82240293';
 
   $.get( searchUrl, function( data ) {
+    var loading = document.getElementById('loading');
+    loading.style.display = 'none';
     console.log(data);
     $.each(data['results'].reverse(), function(index, value) {
       var monthNames = [
