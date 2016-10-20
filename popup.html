@@ -1,37 +1,28 @@
 <!doctype html>
-<!--
- This page is shown when the extension button is clicked, because the
- "browser_action" field in manifest.json contains the "default_popup" key with
- value "popup.html".
- -->
 <html style="width:550px;height:400px;">
   <head>
     <title>Getting Started Extension's Popup</title>
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-     -->
+    <meta name="referrer" content="no-referrer" />
     <link href="style.css" rel="stylesheet" type="text/css">
+    <link href="bootstrap.min.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="jquery-3.1.1.min.js"></script>
     <script src="popup.js"></script>
   </head>
-  <body>
+  <body id="mainBody">
     <button id="searchTabButton" class="noFocus">Search DVIDS Videos</button>
     <button id="liveTabButton">Live Videos</button>
     <div id="searchTab">
       <div id="searchDiv">
         <input id="searchBox" type="text" name="searchBox">
         
-        <button id="searchButton">Search</button>
+        <button class="btn btn-default" id="searchButton">Search</button>
       </div>
       <div>
         <form id="searchForm">
           <p class="advancedSearchParams">Type:</p>
           <select id="types" class="formOptions">
-            <option value="NA">All</option>
-            <option value="video">Video</option>
+            <option value="NA">Any</option>
+            <option value="video" selected>Video</option>
             <option value="image">Image</option>
             <option value="news">News</option>
             <option value="audio">Audio</option>
@@ -39,11 +30,10 @@
           <br><br>
           <p class="advancedSearchParams">Max Results:</p>
           <select id="max" class="formOptions">
-            <option value="NA">All</option>
             <option value="1">1</option>
             <option value="3">3</option>
             <option value="5">5</option>
-            <option value="7">7</option>
+            <option value="7" selected>7</option>
             <option value="10">10</option>
             <option value="20">20</option>
             <option value="50">50</option>
@@ -51,7 +41,7 @@
           <br><br>
           <p class="branch">Branch:</p>
           <select id="branch" class="formOptions">
-            <option value="NA">All</option>
+            <option value="NA">Any</option>
             <option value="Army">Army</option>
             <option value="Navy">Navy</option>
             <option value="Air%20Force">Air Force</option>
@@ -65,12 +55,13 @@
       <p id="searchLoading">Loading...</p>
       <div class="content-wrapper">    
       </div>
+      <img src="cogwheel.png" id="settings" href="www.google.com"></img>
     </div>
     <div id="liveTab">
-      <!-- <p id="upcomingTitle">Upcoming Live Videos</p> -->
       <p id="loading">Loading...</p>
       <div class="content-wrapper">
       </div>
+      <img src="cogwheel.png" id="settingsForLive" href="www.google.com"></img>
     </div>
   </body>
 </html>

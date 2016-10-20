@@ -1,20 +1,26 @@
-body {
-  font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-  font-size: 100%;
+#mainBody {
   background-color: #d9d9d9;
 }
-#status {
-  /* avoid an excessively wide status text */
-/*        white-space: pre;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  max-width: 400px;*/
+.videoTypeTitle {
+  font-weight: bold;
+  padding-top: 10px;
+}
+.videoTypeTitle:hover {
+  text-decoration: none;
 }
 .single-video-container{
   color:#666666;
-  background-color: #d9d9d9;
-  width:100%;
+  background-color: #f2f2f2;
+  width:98%;
   height:100%;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+}
+.single-video-container:hover{
+  background-color: #cccccc;
 }
 .container-main-section {
   text-align: center;
@@ -31,8 +37,13 @@ body {
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.live-thumbnail {
+  width:80%;
+
+}
+
 .thumbnail {
-  width: 100%;
   height:auto;
   width:80%;
   margin: 0 10%;
@@ -41,17 +52,31 @@ body {
 }
 .single-video-summary {
   position: relative;
-  display: inline-block;
-  margin: 10px 30px 10px 30px;
-  font-size: 90%;
+  margin: 15px 30px 10px 30px;
+  font-size: 16px;
+  text-align: center;
+  margin-top: 140px;
+  margin-bottom: 20px;
+  text-decoration: none !important
+}
+
+.live-single-video-summary {
+  position: relative;
+  margin: 15px 30px 10px 30px;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .single-video-title {
   margin-top: 5px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .single-video-time {
   margin-top: 5px;
+  font-size: 16px;
 }
 
 #searchTabButton {
@@ -89,8 +114,7 @@ hr {
   width: 40%;
   background-color: #660000;
   height: 2px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+
 }
 
 a, u {
@@ -99,13 +123,18 @@ a, u {
 
 #searchBox {
   width: 100%;
-  height: 100%;
+  margin-left: 10px;
   float: left;
+  outline: none;
 }
 
 #searchButton {
   float: left;
+  padding: 0px;
   width: 75px;
+  margin-right: 10px;
+  margin-left: 5px;
+  outline: none;
 }
 
 #searchDiv {
@@ -119,6 +148,7 @@ a, u {
   display:flex;
   float: left;
   width: 100%;
+  margin-left: 20px;
 }
 .advancedSearchParams {
   margin-top: 0px;
@@ -135,6 +165,9 @@ a, u {
 
 .videoTypeTitle {
   text-transform:capitalize;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-bottom: 0px;
 }
 
 #liveTab {
@@ -147,3 +180,18 @@ a, u {
 #branch {
   margin-right: 0px;
 }
+.content-wrapper {
+  margin-top: 70px;
+}
+#settings, #settingsForLive{
+  float: right;
+  position: fixed;
+  bottom: 3px;
+  right: 3px;
+}
+#loading, #searchLoading{
+  font-size: 14px;
+  color: #666666;
+  margin-left: 15px;
+}
+

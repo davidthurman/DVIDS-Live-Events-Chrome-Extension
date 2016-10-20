@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
+    var liveEventButton = document.getElementById('')
+
+    var settingsButton = document.getElementById('settings');
+    settingsButton.addEventListener('click', function(){
+      chrome.tabs.create({ 'url': 'chrome://extensions/?options=' + chrome.runtime.id });
+    });
+
+    var settingsButtonForLive = document.getElementById('settingsForLive');
+    settingsButtonForLive.addEventListener('click', function(){
+      chrome.tabs.create({ 'url': 'chrome://extensions/?options=' + chrome.runtime.id });
+    });
+
     var searchButton = document.getElementById('searchButton');
     var loading = document.getElementById('loading');
     loading.style.display = 'none';
@@ -24,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var loading = document.getElementById('loading');
       loading.style.display = 'block';
       $( ".content-wrapper" ).empty();
-      var searchUrl = 'http://api.dvidshub.net/live/list?max_results=5&thumb_width=200&api_key=key-57f3a82240293';
+      var searchUrl = 'http://api.dvidshub.net/live/list?max_results=5&thumb_width=200&api_key=5ecc9ab2da671a108d5f588c8ba1fd3911076a2f';
 
       $.get( searchUrl, function( data ) {
         $.each(data['results'].reverse(), function(index, value) {
@@ -45,12 +57,12 @@ document.addEventListener('DOMContentLoaded', function() {
               '<div class="single-video-container" data-url="' + value['url'] + '">' +
                 '<div class="container-main-section">' +
                   '<div class="thumbnail-wrapper">' +
-                    '<img class="thumbnail" src="' + value['thumbnail']['url'] + '"/>' +
+                    '<img class="img-rounded live-thumbnail" src="' + value['thumbnail']['url'] + '"/>' +
                   '</div>' +
                   '<div class="single-video-title">' + value['title'] + '</div>' +
-                  '<div class="single-video-time">' + (monthIndex + 1) + "/" + day + "/" + year + " " + hours + ":" + minutes + '</div>' +
+                  '<div class="single-video-time">' + (monthIndex + 1) + "/" + day + "/" + year + "<br>" + hours + ":" + minutes + '</div>' +
                 '</div>' +
-                '<div class="single-video-summary">' + value['description'] + '</div>' +
+                '<div class="live-single-video-summary">' + value['description'] + '</div>' +
               '</div></a>';
             if (index != 0){
               singleVideo = singleVideo + '<hr>';
@@ -63,8 +75,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-
-    // onClick's logic below:
     searchButton.addEventListener('click', function() {
       $( ".content-wrapper" ).empty();
       searchLoading.style.display ='block';
@@ -85,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if (branch != "NA") {
         searchUrl = searchUrl + '&branch=' + branch;
       }
-      searchUrl = searchUrl  + '&api_key=key-57f3a82240293';
+      searchUrl = searchUrl  + '&api_key=5ecc9ab2da671a108d5f588c8ba1fd3911076a2f';
       $.get( searchUrl, function( data ) {
         $.each(data['results'].reverse(), function(index, value) {
           if (value['type'] == "publication_issue" || value["type"] == "webcast"){
@@ -116,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 '<p class="videoTypeTitle">' + value['type'] + '</p>' +
                   '<div class="container-main-section">' +
                     '<div class="thumbnail-wrapper">' +
-                      '<img class="thumbnail" src="' + value['thumbnail'] + '"/>' +
+                      '<img class="thumbnail, img-rounded" src="' + value['thumbnail'] + '"/>' +
                     '</div>' +
                     '<div class="single-video-title">' + value['title'] + '</div>' +
                     '<div class="single-video-time">' + (monthIndex + 1) + "/" + day + "/" + year + '</div>' +
@@ -131,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
               '<p class="videoTypeTitle">' + value['type'] + '</p>' +
                 '<div class="container-main-section">' +
                   '<div class="thumbnail-wrapper">' +
-                    '<img class="thumbnail" src="' + value['thumbnail'] + '"/>' +
+                    '<img class="thumbnail, img-rounded" src="' + value['thumbnail'] + '"/>' +
                   '</div>' +
                   '<div class="single-video-title">' + value['title'] + '</div>' +
                   '<div class="single-video-time">' + (monthIndex + 1) + "/" + day + "/" + year + '</div>' +
